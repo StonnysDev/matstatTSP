@@ -1,0 +1,26 @@
+{% extends "base_page.html" %} {% block pagetitle %} Задачи по теории случайных процессов {% endblock %} {% block page-lead %}{% endblock %} {% block content %}
+<form method="POST">
+	{% for task in tasks %}
+	<div class="container my-5">
+		<ol class="p-3 bg-body-tertiary rounded-3">
+			<h5>{{task.ind}}. {{ task.question|safe}}</h5>
+			<div>Варианты ответов:</div>
+			<ol>
+				{% for choice in task.choices %}
+				<li>{{ choice|safe}}</li>
+				{% endfor %}
+			</ol>
+		</ol>
+
+		<div class="solution-container">
+			<label for="solution{{ forloop.counter }}">Введите номер выбранного варианта ответа:</label>
+			<!--<input type="text" id="answer_{{ forloop.counter }}" name="answer_{{ forloop.counter }}" required>-->
+			<textarea type="text" class="form-control input-lg" name="answer_{{ forloop.counter }}" id="answer_{{ forloop.counter }}" rows="1"></textarea>
+		</div>
+	</div>
+
+	<div class="b-example-divider"></div>
+	{% endfor %}
+	<button type="submit" class="btn btn-primary" formaction="/TSP-answers">Проверить решения</button>
+</form>
+{% endblock %}

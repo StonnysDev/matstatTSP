@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block page-title %}{% endblock %}</title>
+		{% load static %}
+		<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" />
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	</head>
+	<body>
+		<main class="container">
+			<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+				<div class="col-lg-12 px-0">
+					<h1 class="display-4 fst-italic">{% block pagetitle %}{% endblock %}</h1>
+					<p class="lead my-3">{% block page-lead %}{% endblock %}</p>
+				</div>
+			</div>
+			{% block content %}{% endblock %}
+		</main>
+		<footer>
+			<p>&copy; 2025</p>
+		</footer>
+	</body>
+</html>

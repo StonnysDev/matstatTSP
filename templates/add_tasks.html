@@ -1,0 +1,71 @@
+{% extends "base_page.html" %} {% block pagetitle %} Раздел для добавления новой задачи {% endblock %} {% block page-lead %}{% endblock %} {% block content %}
+
+<form method="POST">
+	<div class="row px-5 py-2">
+		<h3>Введите все поля. При необходимости вставки формул используйте синтаксис LaTeX: обрамляйте формулы в \\(...\\)</h3>
+	</div>
+	<div class="row px-5 py-4">
+		<div class="col-md-8">
+			<div style="margin-bottom: 20px;">
+				<label for="task_question">Условие задачи</label>
+				<textarea type="text" class="form-control input-lg" name="task_question" id="task_question" aria-describedby="task_question_note" rows="3"></textarea>
+			</div>
+			<div class="row px-7 py-4">
+				<div class="col-md-6">
+					<label for="correct_answer">Укажите номер правильного ответа (1, 2, 3 или 4)</label>
+					<div class="my-3">
+						<div class="form-check form-check-inline">
+							<input id="ans1" name="correct_answer" type="radio" value="1" class="form-check-input" checked required />
+							<label class="form-check-label" for="ans1">1</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input id="ans2" name="correct_answer" type="radio" value="2" class="form-check-input" required />
+							<label class="form-check-label" for="ans2">2</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input id="ans3" name="correct_answer" type="radio" value="3" class="form-check-input" required />
+							<label class="form-check-label" for="ans3">3</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input id="ans4" name="correct_answer" type="radio" value="4" class="form-check-input" required />
+							<label class="form-check-label" for="ans4">4</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<label for="task_type">Укажите тип задачи</label>
+					<div class="my-3">
+						<div class="form-check">
+							<input id="matstat" name="task_type" type="radio" value="matstat" class="form-check-input" checked required />
+							<label class="form-check-label" for="matstat">Математическая статистика</label>
+						</div>
+						<div class="form-check">
+							<input id="TSP" name="task_type" type="radio" value="TSP" class="form-check-input" required />
+							<label class="form-check-label" for="TSP">Теория случайных процессов</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div style="margin-bottom: 10px;">
+				<label for="answer_1">Первый вариант ответа</label>
+				<input type="text" class="form-control input-lg" name="answer_1" id="answer_1" />
+			</div>
+			<div style="margin-bottom: 10px;">
+				<label for="answer_2">Второй вариант ответа</label>
+				<input type="text" class="form-control input-lg" name="answer_2" id="answer_2" />
+			</div>
+			<div style="margin-bottom: 10px;">
+				<label for="answer_3">Третий вариант ответа</label>
+				<input type="text" class="form-control input-lg" name="answer_3" id="answer_3" />
+			</div>
+			<div style="margin-bottom: 10px;">
+				<label for="answer_4">Четвертый вариант ответа</label>
+				<input type="text" class="form-control input-lg" name="answer_4" id="answer_4" />
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary" formaction="/send-tasks">Отправить новую задачу</button>
+	</div>
+</form>
+{% endblock %}

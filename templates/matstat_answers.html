@@ -1,0 +1,31 @@
+{% extends "base_page.html" %}
+
+{% block pagetitle %}
+Результаты проверки ответов к задачам по математической статистике
+{% endblock %}
+
+{% block page-lead %}
+{% if success %}
+Все ответы введены корректно
+{% else %}
+Ошибка. Часть ответов введена некорректно или не введена вовсе
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% if success %}
+    {% for res in results%}
+    <div class="container my-5">
+    <ol class=" p-3 bg-body-tertiary rounded-3">
+      <h5>{{ res.ind }}. {{ res.question|safe }}</h5>
+        <div>Ваш ответ {{res.user_answer_num}}: {{res.user_answer_text|safe}}, правильный ответ {{res.correct_answer_num}}: {{res.correct_answer_text|safe}}</div>
+      </ol>
+    </ol>
+    <div class="b-example-divider"></div>
+  </div>
+    {% endfor %}
+    <div>Вы правильно решили {{ correct_answers }} из {{ total_tasks }} ({{score_percentage}}%). </div>
+    {% endif %}
+  </form>
+{% endblock %}
